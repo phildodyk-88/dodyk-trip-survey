@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dodyk Family Trip — Cancún Dec 26</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8;
+    --deep: #1A2F2A;
+    --teal: #0D6B5E;
+    --teal-light: #E8F5F2;
+    --teal-mid: #B8DDD7;
+    --gold: #C4903A;
+    --gold-light: #FBF5E8;
+    --coral: #C45C3A;
+    --coral-light: #FBEEE8;
+    --text: #1A2F2A;
+    --muted: #5A7068;
+    --border: #D8E8E4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--sand);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--deep);
+    color: white;
+    padding: 64px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: var(--teal);
+    opacity: 0.12;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -40px;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.1;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.72);
+    max-width: 560px;
+    margin: 0 auto 28px;
+    position: relative;
+  }
+  .trip-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    position: relative;
+  }
+  .chip {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+
+  /* PROGRESS NAV */
+  .progress-nav {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0 20px;
+  }
+  .progress-nav-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .progress-nav-inner::-webkit-scrollbar { display: none; }
+  .nav-step {
+    flex-shrink: 0;
+    padding: 14px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .nav-step:hover { color: var(--teal); }
+  .nav-step.active { color: var(--teal); border-bottom-color: var(--teal); }
+
+  /* SECTIONS */
+  .section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    max-width: 620px;
+  }
+
+  /* EXPERIENCE CARDS */
+  .exp-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .exp-card-header {
+    padding: 20px 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    user-select: none;
+  }
+  .exp-card-header:hover { background: #FAFAF8; }
+  .exp-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .exp-icon.teal { background: var(--teal-light); }
+  .exp-icon.gold { background: var(--gold-light); }
+  .exp-icon.coral { background: var(--coral-light); }
+  .exp-main { flex: 1; }
+  .exp-title { font-weight: 500; font-size: 16px; color: var(--deep); margin-bottom: 3px; }
+  .exp-sub { font-size: 13px; color: var(--muted); }
+  .exp-toggle { color: var(--muted); font-size: 20px; margin-left: auto; padding-top: 2px; transition: transform .2s; }
+  .exp-toggle.open { transform: rotate(180deg); }
+
+  .exp-body {
+    display: none;
+    padding: 0 24px 24px;
+    border-top: 1px solid var(--border);
+  }
+  .exp-body.open { display: block; }
+
+  .exp-description {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 16px 0;
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 16px 0;
+  }
+  @media (max-width: 520px) { .highlights-grid { grid-template-columns: 1fr; } }
+  .highlight {
+    background: var(--teal-light);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    color: var(--deep);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .highlight-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); margin-top: 5px; flex-shrink: 0; }
+
+  .review-label {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin: 20px 0 10px;
+  }
+  .links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .res-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    padding: 7px 13px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all .15s;
+  }
+  .res-link:hover {
+    background: var(--teal);
+    color: white;
+    border-color: var(--teal);
+  }
+  .res-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  .quote-box {
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 16px 0;
+    font-size: 13px;
+    color: var(--deep);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  @media (max-width: 520px) { .detail-grid { grid-template-columns: 1fr; } }
+  .detail-col {}
+  .detail-col-label {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 8px;
+  }
+  .detail-col-label.green { color: var(--teal); }
+  .detail-col-label.amber { color: var(--gold); }
+  .detail-item {
+    display: flex;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 5px;
+    line-height: 1.5;
+  }
+  .detail-dot { width: 5px; height: 5px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+  .detail-dot.green { background: var(--teal); }
+  .detail-dot.amber { background: var(--gold); }
+
+  /* SURVEY */
+  .survey-intro {
+    background: var(--deep);
+    color: white;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .survey-intro-icon { font-size: 36px; flex-shrink: 0; }
+  .survey-intro h3 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 6px; }
+  .survey-intro p { font-size: 14px; color: rgba(255,255,255,0.7); }
+
+  .jotform-wrap {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .jotform-wrap iframe {
+    width: 100%;
+    min-height: 900px;
+    border: none;
+    display: block;
+  }
+
+  /* HOTELS SECTION */
+  .hotel-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 560px) { .hotel-cards { grid-template-columns: 1fr; } }
+  .hotel-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    padding: 20px;
+  }
+  .hotel-dates {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .hotel-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .hotel-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  /* ITINERARY OPTIONS */
+  .itin-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 600px) { .itin-options { grid-template-columns: 1fr; } }
+  .itin-option {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 18px 16px;
+  }
+  .itin-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+  .itin-name { font-weight: 500; font-size: 14px; color: var(--deep); margin-bottom: 6px; }
+  .itin-desc { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+  .itin-cost { font-size: 11px; font-weight: 500; color: var(--gold); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--deep);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 13px;
+  }
+
+  /* UTIL */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 3px 9px;
+    border-radius: 20px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .badge-teal { background: var(--teal-light); color: var(--teal); }
+  .badge-gold { background: var(--gold-light); color: var(--gold); }
+
+  .scroll-hint {
+    text-align: center;
+    padding: 32px 20px 8px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .scroll-hint strong { color: var(--deep); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Family Trip Planning</div>
+  <h1>Dodyk Family — Cancún<br>Dec 26 – Jan 2</h1>
+  <p>Flights and hotels are booked. Now we need your input to plan the days. Read through the experiences below, then fill out the survey at the bottom.</p>
+  <div class="trip-chips">
+    <span class="chip">✈️ IND → CUN Dec 26, 7:25am</span>
+    <span class="chip">🌿 Hotel Xcaret Dec 26–29</span>
+    <span class="chip">🏖️ Grand Fiesta Americana Dec 29–Jan 2</span>
+    <span class="chip">👨‍👩‍👧‍👦 9 people, 3 families</span>
+    <span class="chip">✈️ CUN → IND Jan 2, 12pm</span>
+  </div>
+</div>
+
+<!-- PROGRESS NAV -->
+<nav class="progress-nav">
+  <div class="progress-nav-inner">
+    <div class="nav-step active" onclick="scrollTo('hotels')">Our Hotels</div>
+    <div class="nav-step" onclick="scrollTo('xcaret-experiences')">Xcaret Experiences</div>
+    <div class="nav-step" onclick="scrollTo('waterparks')">Waterparks</div>
+    <div class="nav-step" onclick="scrollTo('gfa-experiences')">Beach Segment</div>
+    <div class="nav-step" onclick="scrollTo('itineraries')">Sample Itineraries</div>
+    <div class="nav-step" onclick="scrollTo('survey')">📋 Survey</div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HOTELS -->
+  <div class="section" id="hotels">
+    <div class="section-label">Where We're Staying</div>
+    <div class="section-title">Two properties, one great trip</div>
+    <p class="section-desc">We split the week between two all-inclusive resorts. Each one does something the other can't.</p>
+
+    <div class="hotel-cards">
+      <div class="hotel-card">
+        <div class="hotel-dates">Dec 26 – 29 · 3 nights</div>
+        <div class="hotel-name">Hotel Xcaret México</div>
+        <div class="hotel-desc">Jungle-meets-coast resort in the Riviera Maya. All-fun inclusive means every Xcaret park is included. Michelin-starred restaurant. Forbes 5-star. No traditional beach — river lagoons, cenotes, and coves instead.</div>
+        <div class="links-row">
+          <a class="res-link" href="https://www.youtube.com/watch?v=gnGxxV570VM" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+            Honest review
+          </a>
+          <a class="res-link" href="https://www.tripadvisor.com/Hotel_Feature-g150812-d13189438-zft1-Hotel_Xcaret_Mexico.html" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            TripAdvisor
+          </a>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-dates">Dec 29 – Jan 2 · 4 nights</div>
+        <div class="hotel-name">Grand Fiesta Americana Coral Beach</div>
+        <div class="hotel-desc">Full ocean-front all-inclusive on the Cancún Hotel Zone. All 3 families in ocean-front suites. Turquoise Caribbean water, resort pool scene. New Year's Eve is here. Easy airport access Jan 2.</div>
+        <div class="links-row">
+          <a class="res-link" href="https://www.youtube.com/watch?v=GIJ7Ja_1izk" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+            Resort tour
+          </a>
+          <a class="res-link" href="https://www.tripadvisor.com/Hotel_Review-g150807-d151921-Reviews-Grand_Fiesta_Americana_Coral_Beach_Cancun_All_Inclusive_Spa_Resort-Cancun_Yucatan_Peninsula.html" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            TripAdvisor
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- XCARET EXPERIENCES -->
+  <div class="section" id="xcaret-experiences">
+    <div class="section-label">Hotel Xcaret · Dec 26–29</div>
+    <div class="section-title">What's included — and what to expect</div>
+    <p class="section-desc">All-fun inclusive means unlimited access to Xcaret's parks. We have 3 days here. Read what each experience is actually like before voting.</p>
+
+    <!-- Xplor -->
+    <div class="exp-card">
+      <div class="exp-card-header" onclick="toggleExp(this)">
+        <div class="exp-icon teal">🪂</div>
+        <div class="exp-main">
+          <div class="exp-title">Xplor Park <span class="badge badge-teal">Included</span></div>
+          <div class="exp-sub">Ziplines · ATV cave rafts · underground rivers · all ages</div>
+        </div>
+        <div class="exp-toggle">▾</div>
+      </div>
+      <div class="exp-body">
+        <p class="exp-description">Xplor is Xcaret's adventure park — think Indiana Jones meets Cancún. Seven zipline circuits fly you over the jungle canopy (up to 500 meters per run), then you switch to ATVs through stalactite-filled caves with headlamps, and finish in wooden rafts floating through underground rivers. It's fully included in our stay and legitimately great for all ages from kids 9+ through grandparents.</p>
+        <div class="highlights-grid">
+          <div class="highlight"><div class="highlight-dot"></div>7 zipline circuits, up to 500m each</div>
+          <div class="highlight"><div class="highlight-dot"></div>ATV cave adventure with headlamps</div>
+          <div class="highlight"><div class="highlight-dot"></div>Underground rivers by wooden raft</div>
+          <div class="highlight"><div class="highlight-dot"></div>Hammock pool for relaxing after</div>
+          <div class="highlight"><div class="highlight-dot"></div>Food and drinks included</div>
+          <div class="highlight"><div class="highlight-dot"></div>All 9 of us can do this together</div>
+        </div>
+        <div class="review-label">Watch before deciding</div>
+        <div class="links-row">
+          <a class="res-link" href="https://www.youtube.com/results?search_query=Xplor+park+Xcaret+zipline+2025" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+            YouTube — Xplor
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Xel-Ha -->
+    <div class="exp-card">
+      <div class="exp-card-header" onclick="toggleExp(this)">
+        <div class="exp-icon teal">🐠</div>
+        <div class="exp-main">
+          <div class="exp-title">Xel-Há Aquatic Park <span class="badge badge-teal">Included</span></div>
+          <div class="exp-sub">Natural snorkel bay · lazy river · cliff jump · most relaxing of the parks</div>
+        </div>
+        <div class="exp-toggle">▾</div>
+      </div>
+      <div class="exp-body">
+        <p class="exp-description">Xel-Há is a massive natural aquarium — a protected cove and inlet where you snorkel among thousands of tropical fish from the moment you enter the water. There's a long, winding lazy river to float down, a cliff jump platform (about 10 feet — optional), and hammock areas strung over the water. It's the chillest of the Xcaret parks and perfect for anyone who wants to be in the water without the adrenaline of Xplor. Food and drinks are included.</p>
+        <div class="highlights-grid">
+          <div class="highlight"><div class="highlight-dot"></div>Natural ocean inlet — snorkel immediately</div>
+          <div class="highlight"><div class="highlight-dot"></div>Winding lazy river through jungle</div>
+          <div class="highlight"><div class="highlight-dot"></div>Optional 10-ft cliff jump</div>
+          <div class="highlight"><div class="highlight-dot"></div>Hammocks over the water</div>
+          <div class="highlight"><div class="highlight-dot"></div>Best for grandparents + young kids</div>
+          <div class="highlight"><div class="highlight-dot"></div>Food, drinks, gear all included</div>
+        </div>
+        <div class="review-label">Watch before deciding</div>
+        <div class="links-row">
+          <a class="res-link" href="https://www.youtube.com/results?search_query=Xel-Ha+park+snorkeling+review+2025" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+            YouTube — Xel-Há
+          </a>
+          <a class="res-link" href="https://www.tripadvisor.com/Attraction_Review-g150812-d154483-Reviews-Xel_Ha_Park-Playa_del_Carmen_Yucatan_Peninsula.html" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            TripAdvisor
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Night Show -->
+    <div class="exp-card">
+      <div class="exp-card-header" onclick="toggleExp(this)">
+        <div class="exp-icon gold">🎭</div>
+        <div class="exp-main">
+          <div class="exp-title">Xcaret México Espectacular Night Show <span class="badge badge-teal">Included</span></div>
+          <div class="exp-sub">2-hour cultural spectacular · nightly 7pm · 300+ artists on stage · bucket list</div>
+        </div>
+        <div class="exp-toggle">▾</div>
+      </div>
+      <div class="exp-body">
+        <p class="exp-description">This is the night show that people come back to Xcaret specifically for. Held every night at 7pm in the massive open-air Gran Tlachco Theater, it's a 2-hour journey through 500 years of Mexican history — Mayan civilization, the Spanish conquest, the colonial era, independence, and modern Mexico — told through 300+ performers, regional dances, live music, horses, colorful birds, and incredible costumes. Universally cited as one of the best cultural shows in the entire Caribbean/Mexico region. It's included with our hotel stay — no extra charge. We just need to reserve seats.</p>
+        <div class="quote-box">"The night show was the highlight of our visit. Xcaret México Espectacular is designed to bring together the history, traditions, music, and cultural diversity of Mexico in a way that leaves a lasting impression." — TripAdvisor reviewer</div>
+        <div class="highlights-grid">
+          <div class="highlight"><div class="highlight-dot"></div>300+ performers, every night at 7pm</div>
+          <div class="highlight"><div class="highlight-dot"></div>500 years of Mexican history in 2 hrs</div>
+          <div class="highlight"><div class="highlight-dot"></div>Horses, birds, mariachi, regional dances</div>
+          <div class="highlight"><div class="highlight-dot"></div>Massive covered open-air theater</div>
+          <div class="highlight"><div class="highlight-dot"></div>Included — no extra cost</div>
+          <div class="highlight"><div class="highlight-dot"></div>Optional gourmet dinner upgrade available</div>
+        </div>
+        <div class="detail-grid">
+          <div class="detail-col">
+            <div class="detail-col-label green">What people love</div>
+            <div class="detail-item"><div class="detail-dot green"></div>Universally called unmissable</div>
+            <div class="detail-item"><div class="detail-dot green"></div>Great for all ages including kids</div>
+            <div class="detail-item"><div class="detail-dot green"></div>Runs rain or shine (covered)</div>
+          </div>
+          <div class="detail-col">
+            <div class="detail-col-label amber">Worth knowing</div>
+            <div class="detail-item"><div class="detail-dot amber"></div>First half slightly slow — stay for act 2</div>
+            <div class="detail-item"><div class="detail-dot amber"></div>Concrete seats — bring a cushion</div>
+            <div class="detail-item"><div class="detail-dot amber"></div>Reserve ahead — fills up</div>
+          </div>
+        </div>
+        <div class="review-label">Watch before deciding</div>
+        <div class="links-row">
+          <a class="res-link" href="https://www.youtube.com/watch?v=a0vzXwCkcHQ" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+            "Unmissable" — YouTube
+          </a>
+          <a class="res-link" href="https://www.youtube.com/watch?v=P78RcxnSoYY" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+            Full show review
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HA' -->
+    <div class="exp-card">
+      <div class="exp-card-header" onclick="toggleExp(this)">
+        <div class="exp-icon gold">⭐</div>
+        <div class="exp-main">
+          <div class="exp-title">HA' Restaurant — Michelin Star Dinner <span class="badge badge-gold">Extra cost</span></div>
+          <div class="exp-sub">9-course tasting menu · ~$246/person · adults only · book immediately at check-in</div>
+        </div>
+        <div class="exp-toggle">▾</div>
+      </div>
+      <div class="exp-body">
+        <p class="exp-description">HA' (pronounced "ha" — it means "water" in Mayan) is the first restaurant at Xcaret to earn a Michelin star, awarded in 2024 and confirmed again in 2025. It's led by Chef Carlos Gaytán, who became the first Mexican chef ever to earn a Michelin star both inside and outside Mexico. The restaurant serves a 9-course contemporary Mexican tasting menu — think wagyu A5, truffled mushroom beignets, Mayan-inspired ceviche, and dishes that change seasonally. The dining room is designed around water — a vortex water feature greets you at the entrance. It's adults only, dress code applies (no shorts, no sandals), and it costs roughly $246 per person. It is absolutely a splurge — but it's genuinely one of the best restaurants in all of Mexico.</p>
+        <div class="quote-box">"The whole experience at HA' was amazing, start to finish. Changes the definition of food. Service is incredible. Very detail-oriented but not pretentious. Must try if staying at Xcaret." — OpenTable reviewer (4.8 stars, 385 reviews)</div>
+        <div class="highlights-grid">
+          <div class="highlight"><div class="highlight-dot"></div>Michelin star 2024 + 2025</div>
+          <div class="highlight"><div class="highlight-dot"></div>9-course tasting menu, changes seasonally</div>
+          <div class="highlight"><div class="highlight-dot"></div>Chef Carlos Gaytán — legendary credentials</div>
+          <div class="highlight"><div class="highlight-dot"></div>French technique meets Mexican soul</div>
+          <div class="highlight"><div class="highlight-dot"></div>~$246/person, wine pairing extra</div>
+          <div class="highlight"><div class="highlight-dot"></div>Adults only (18+), dress code</div>
+        </div>
+        <div class="review-label">Read & watch</div>
+        <div class="links-row">
+          <a class="res-link" href="https://noshandnibble.blog/ha-restaurant-review-the-5000-mxn-michelin-experience-at-hotel-xcaret-mexico/" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Full review ($246 experience)
+          </a>
+          <a class="res-link" href="https://guide.michelin.com/us/en/quintana-roo/playa-del-carmen_2068368/restaurant/ha-1208266" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Michelin Guide listing
+          </a>
+          <a class="res-link" href="https://www.tripadvisor.com/Restaurant_Review-g150812-d13983595-Reviews-Restaurante_Ha-Playa_del_Carmen_Yucatan_Peninsula.html" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            TripAdvisor
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WATERPARKS -->
+  <div class="section" id="waterparks">
+    <div class="section-label">Optional Day Trips</div>
+    <div class="section-title">Waterpark options — extra cost, big payoff</div>
+    <p class="section-desc">Xcaret doesn't have a traditional waterslide park. If we want one, we do a day trip. These are the two best options in the region — we could do one, both, or neither.</p>
+
+    <!-- Aqua Nick -->
+    <div class="exp-card">
+      <div class="exp-card-header" onclick="toggleExp(this)">
+        <div class="exp-icon coral">🎢</div>
+        <div class="exp-main">
+          <div class="exp-title">Aqua Nick — Nickelodeon Water Park <span class="badge badge-gold">~$155/person</span></div>
+          <div class="exp-sub">21 slides · Soak Summit Tower (59 ft) · Sliming events · SpongeBob theming · best for kids</div>
+        </div>
+        <div class="exp-toggle">▾</div>
+      </div>
+      <div class="exp-body">
+        <p class="exp-description">Aqua Nick is Nickelodeon's flagship waterpark in Latin America — 21 slides across 3 zones, with the Soak Summit Tower rising 59 feet and featuring trapdoor capsule drops. There are PAW Patrol and SpongeBob-themed areas, actual Sliming events where characters dump slime on the crowd, and character meet-and-greets. It's the park that's hardest to say no to if you have kids ages 9–15 — the theming alone is a differentiator. About 50 minutes south of Grand Fiesta Americana.</p>
+        <div class="quote-box">"Big enough park to spend a full day in. Good variety for small kids, medium kids and teens. Only thing that put a damper on things was the water is very cold — but it was so much fun we forgot about it." — Viator reviewer</div>
+        <div class="highlights-grid">
+          <div class="highlight"><div class="highlight-dot"></div>21 slides including 59-ft trapdoor drop</div>
+          <div class="highlight"><div class="highlight-dot"></div>SpongeBob + PAW Patrol zones</div>
+          <div class="highlight"><div class="highlight-dot"></div>Live Sliming events with characters</div>
+          <div class="highlight"><div class="highlight-dot"></div>Activity pool + 2 rivers</div>
+          <div class="highlight"><div class="highlight-dot"></div>~$155/person (Splash Bites tier, food incl.)</div>
+          <div class="highlight"><div class="highlight-dot"></div>~$1,400 total for 9 people</div>
+        </div>
+        <div class="review-label">Watch + read</div>
+        <div class="links-row">
+          <a class="res-link" href="https://www.youtube.com/watch?v=a3TJNjkYf8M" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+            YouTube walkthrough
+          </a>
+          <a class="res-link" href="https://www.tripadvisor.com/Attraction_Review-g150812-d23565341-Reviews-Aqua_Nick_Riviera_Maya-Playa_del_Carmen_Yucatan_Peninsula.html" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            TripAdvisor
+          </a>
+          <a class="res-link" href="https://aquanickrivieramaya.com/en/tickets" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Official tickets
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jungala -->
+    <div class="exp-card">
+      <div class="exp-card-header" onclick="toggleExp(this)">
+        <div class="exp-icon coral">🌊</div>
+        <div class="exp-main">
+          <div class="exp-title">Jungala Aqua Experience — Vidanta <span class="badge badge-gold">~$74/adult</span></div>
+          <div class="exp-sub">Elite thrill rides · AquaLoop 360° · 5-ft wave pool · longest lazy river in Latin America</div>
+        </div>
+        <div class="exp-toggle">▾</div>
+      </div>
+      <div class="exp-body">
+        <p class="exp-description">Jungala is designed for riders who want serious slides — not theming. The AquaDrop is a near-vertical plunge, the AquaLoop is a complete 360° loop (one of very few in Mexico), and the Flatline Loop sends you through a full inversion. The wave pool generates waves up to 5 feet — the biggest in the region. The lazy river is the longest in Latin America. It's low-density by design (Vidanta limits capacity), so lines are almost nonexistent. This is the park for teens and adults who've done Aqua Nick before or want a more intense experience. Closed Thursdays and Fridays.</p>
+        <div class="quote-box">"Never waited in a line. Tons of chairs available. The lazy river was the highlight. Everything was impeccably clean. I'd skip Xel-Há and head to Jungala." — TripAdvisor reviewer</div>
+        <div class="highlights-grid">
+          <div class="highlight"><div class="highlight-dot"></div>AquaLoop — full 360° inversion</div>
+          <div class="highlight"><div class="highlight-dot"></div>AquaDrop — near-vertical plunge</div>
+          <div class="highlight"><div class="highlight-dot"></div>Wave pool: waves up to 5 feet</div>
+          <div class="highlight"><div class="highlight-dot"></div>Longest lazy river in Latin America</div>
+          <div class="highlight"><div class="highlight-dot"></div>~$74/adult, ~$37/child under 4 ft</div>
+          <div class="highlight"><div class="highlight-dot"></div>Low crowds by design</div>
+        </div>
+        <div class="detail-grid">
+          <div class="detail-col">
+            <div class="detail-col-label green">Great for</div>
+            <div class="detail-item"><div class="detail-dot green"></div>Teens + adults who want intensity</div>
+            <div class="detail-item"><div class="detail-dot green"></div>Grandparents (wave pool + lazy river)</div>
+            <div class="detail-item"><div class="detail-dot green"></div>Anyone who hates long lines</div>
+          </div>
+          <div class="detail-col">
+            <div class="detail-col-label amber">Worth knowing</div>
+            <div class="detail-item"><div class="detail-dot amber"></div>Closed Thursdays + Fridays</div>
+            <div class="detail-item"><div class="detail-dot amber"></div>Water can be cold</div>
+            <div class="detail-item"><div class="detail-dot amber"></div>Food is expensive on-site</div>
+          </div>
+        </div>
+        <div class="review-label">Watch + read</div>
+        <div class="links-row">
+          <a class="res-link" href="https://www.youtube.com/watch?v=C4JOqf_Mi4o" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+            Every slide POV
+          </a>
+          <a class="res-link" href="https://www.youtube.com/watch?v=GiGuo73F6uY" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+            Secret jungle park
+          </a>
+          <a class="res-link" href="https://www.tripadvisor.com/Attraction_Review-g150812-d17431846-Reviews-Jungala_Aqua_Experience-Playa_del_Carmen_Yucatan_Peninsula.html" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            TripAdvisor
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GFA EXPERIENCES -->
+  <div class="section" id="gfa-experiences">
+    <div class="section-label">Grand Fiesta Americana · Dec 29–Jan 2</div>
+    <div class="section-title">Beach, New Year's Eve + possible add-ons</div>
+    <p class="section-desc">The second half of the trip is all about the beach and ringing in 2027 together. There are also some optional day trips from this base if the group wants more.</p>
+
+    <div class="exp-card">
+      <div class="exp-card-header" onclick="toggleExp(this)">
+        <div class="exp-icon teal">🎉</div>
+        <div class="exp-main">
+          <div class="exp-title">New Year's Eve</div>
+          <div class="exp-sub">Dec 31 · group dinner + midnight celebration · needs advance booking</div>
+        </div>
+        <div class="exp-toggle">▾</div>
+      </div>
+      <div class="exp-body">
+        <p class="exp-description">New Year's Eve falls on the 4th night of our Grand Fiesta stay — and it's a big decision for the group. Options range from a formal group dinner reservation for all 9 (needs to be booked weeks in advance — NYE at Cancún resorts fills fast) to joining whatever the resort puts on, to splitting up by family. What does everyone want?</p>
+        <div class="highlights-grid">
+          <div class="highlight"><div class="highlight-dot"></div>Group dinner all 9 together</div>
+          <div class="highlight"><div class="highlight-dot"></div>Resort NYE party / countdown event</div>
+          <div class="highlight"><div class="highlight-dot"></div>Midnight on the beach or pool deck</div>
+          <div class="highlight"><div class="highlight-dot"></div>Each family does their own thing</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-card-header" onclick="toggleExp(this)">
+        <div class="exp-icon teal">🚤</div>
+        <div class="exp-main">
+          <div class="exp-title">Optional Add-On Experiences</div>
+          <div class="exp-sub">Isla Mujeres · Chichen Itza · snorkeling · sunset cruise · cenotes · spa</div>
+        </div>
+        <div class="exp-toggle">▾</div>
+      </div>
+      <div class="exp-body">
+        <p class="exp-description">Grand Fiesta is a great base for day trips if anyone wants more than the beach. None of these are required — but they're worth knowing about before you vote.</p>
+        <div class="highlights-grid">
+          <div class="highlight"><div class="highlight-dot"></div><strong>Isla Mujeres</strong> — 20-min ferry, stunning island, best snorkeling near Cancún. Easy half-day.</div>
+          <div class="highlight"><div class="highlight-dot"></div><strong>Chichen Itza</strong> — one of the 7 wonders of the world, ~3 hrs each way. Long day but bucket-list.</div>
+          <div class="highlight"><div class="highlight-dot"></div><strong>Sunset cruise</strong> — catamaran, open bar, Cancún coastline at golden hour. Typically ~$80/person.</div>
+          <div class="highlight"><div class="highlight-dot"></div><strong>Snorkeling / scuba trip</strong> — Cancún Underwater Museum (MUSA) or Isla Mujeres reef. Good for certified divers.</div>
+          <div class="highlight"><div class="highlight-dot"></div><strong>Cenote tour</strong> — freshwater sinkholes, crystal clear, different from anything else. Half-day.</div>
+          <div class="highlight"><div class="highlight-dot"></div><strong>Spa day</strong> — Grand Fiesta has a spa on-site. Easy to book for adults while kids do the beach.</div>
+        </div>
+        <div class="review-label">Research</div>
+        <div class="links-row">
+          <a class="res-link" href="https://www.youtube.com/results?search_query=Isla+Mujeres+day+trip+Cancun+2025" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+            Isla Mujeres
+          </a>
+          <a class="res-link" href="https://www.youtube.com/results?search_query=Chichen+Itza+day+trip+Cancun+worth+it" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+            Chichen Itza
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITINERARIES -->
+  <div class="section" id="itineraries">
+    <div class="section-label">How It Could Look</div>
+    <div class="section-title">Three sample itineraries</div>
+    <p class="section-desc">Phil built three full day-by-day options — from packed to pure beach. Which feels right?</p>
+
+    <div class="itin-options">
+      <div class="itin-option">
+        <div class="itin-letter">A</div>
+        <div class="itin-name">Max Experience</div>
+        <div class="itin-desc">2 Xcaret park days + night show + Aqua Nick (transfer day) + Jungala. Something intentional every single day.</div>
+        <div class="itin-cost">~$3,200 in day trip costs</div>
+      </div>
+      <div class="itin-option">
+        <div class="itin-letter">B</div>
+        <div class="itin-name">Balanced</div>
+        <div class="itin-desc">1 Xcaret park day + night show + Aqua Nick on transfer day. 2 free beach days at Grand Fiesta.</div>
+        <div class="itin-cost">~$1,400 in day trip costs</div>
+      </div>
+      <div class="itin-option">
+        <div class="itin-letter">C</div>
+        <div class="itin-name">Beach First</div>
+        <div class="itin-desc">1 Xcaret park day + night show only. No day trips. 3 full unscheduled beach days.</div>
+        <div class="itin-cost">Zero extra costs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SURVEY -->
+  <div class="section" id="survey">
+    <div class="section-label">Your Turn</div>
+    <div class="section-title">Tell Phil what you want</div>
+
+    <div class="survey-intro">
+      <div class="survey-intro-icon">📋</div>
+      <div>
+        <h3>5 minutes, your opinions matter</h3>
+        <p>Phil is collecting everyone's answers to finalize the day-by-day itinerary. No account needed — just fill it out and submit.</p>
+      </div>
+    </div>
+
+    <div class="jotform-wrap">
+      <iframe
+        src="https://form.jotform.com/261315869510054"
+        title="Dodyk Family Trip Survey"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Dodyk Family Trip · Cancún · Dec 26, 2026 – Jan 2, 2027 · Built by Phil
+</div>
+
+<script>
+function toggleExp(header) {
+  const body = header.nextElementSibling;
+  const toggle = header.querySelector('.exp-toggle');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  toggle.classList.toggle('open', !isOpen);
+}
+
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.querySelectorAll('.nav-step').forEach(s => s.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// Update active nav on scroll
+const sections = ['hotels','xcaret-experiences','waterparks','gfa-experiences','itineraries','survey'];
+const navSteps = document.querySelectorAll('.nav-step');
+window.addEventListener('scroll', () => {
+  let current = 0;
+  sections.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) current = i;
+  });
+  navSteps.forEach((s, i) => s.classList.toggle('active', i === current));
+}, { passive: true });
+</script>
+</body>
+</html>
